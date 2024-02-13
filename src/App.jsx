@@ -1,46 +1,33 @@
 import { useState } from 'react'
 
-const Display = (props) => {
-  return (
-    <div>{props.counter}</div>
-  )
-}
+const Display = props => <div>{props.value}</div>
 
-const Button = (props) => {
-  return (
-    <button onClick={props.onClick}>
-      {props.text}
-    </button>
-  )
-}
+const Button = (props) => (
+  <button onClick={props.handleClick}>
+    {props.text}
+  </button>
+)
+
 const App = () => {
-  const [ counter, setCounter ] = useState(0)
-  console.log('renderización con valor de contador', counter)
+  const [value, setValue] = useState(10)
 
-  const increaseByOne = () => setCounter(counter + 1)
-  console.log('en aumento, valor antes', counter)
-
-  const decreaseByOne = () => setCounter(counter - 1)
-  console.log('decreciente, valor antes de', counter)
-  const setToZero = () => setCounter(0)
-  console.log('puesta a cero, valor antes de', counter)
+  const setToValue = (newValue) => {
+    console.log('value now', newValue)
+    setValue(newValue)
+  }
 
   return (
     <div>
-      <Display counter={counter}/>
-
-      <Button
-        onClick={increaseByOne}
-        text='plus' 
-      />
-      <Button
-        onClick={setToZero}
-        text='zero'
-      />     
-      <Button
-        onClick={decreaseByOne}
-        text='minus'
-      />           
+      
+    <button onClick={() => setValue(1000)}>
+        value
+      </button>
+      <button onClick={() => setValue(0)}>
+        
+      </button>
+      <button onClick={() => setValue(value + 1)}>
+        bad
+      </button>
     </div>
   )
 }
