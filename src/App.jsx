@@ -11,7 +11,7 @@ const App = ({ notes }) => {
         )}
       </ul>
     </div>
-  )
+  )  
 }
 
 export default App;
